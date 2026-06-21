@@ -501,9 +501,9 @@ button:hover,
 }
 
 .movie-details__watch {
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--text-h);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: #0d9488;
+  color: #fff;
+  border: 1px solid #0d9488;
 }
 
 .movie-details__watch:hover,
@@ -513,9 +513,9 @@ button:hover,
 }
 
 .movie-details__watch--active {
-  background: var(--accent);
+  background: #065f46;
   color: #fff;
-  border-color: var(--accent);
+  border-color: #065f46;
 }
 
 .movie-details__favorite {

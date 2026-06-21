@@ -3,10 +3,15 @@
   --nav-height: 64px;
   --nav-max-width: 1280px;
   --accent: #a78bfa;
-  --text-primary: var(--text-h);
-  --text-secondary: rgba(255,255,255,0.75);
+  --text-primary: #1f2937;
+  --text-secondary: rgba(0,0,0,0.55);
   --bg-dark: rgba(10,10,15,0.85);
   --bg-light: rgba(255,255,255,0.85);
+}
+
+html.theme-dark {
+  --text-primary: #f3f4f6;
+  --text-secondary: rgba(255,255,255,0.75);
 }
 
 .site-header {
@@ -74,9 +79,10 @@ html.theme-dark .site-header.scrolled {
 .nav-label { display:inline-block; }
 
 /* Theme toggle */
-.theme-toggle { width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.08); cursor:pointer; }
-.theme-toggle:hover { background: rgba(255,255,255,0.15); }
-html.theme-dark .theme-toggle { border:1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); }
+.theme-toggle { width:36px; height:36px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(0,0,0,0.12); background: rgba(0,0,0,0.05); cursor:pointer; color: var(--text-primary); }
+.theme-toggle:hover { background: rgba(0,0,0,0.1); }
+html.theme-dark .theme-toggle { border:1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); }
+html.theme-dark .theme-toggle:hover { background: rgba(255,255,255,0.12); }
 
 /* Hamburger */
 .hamburger { width:36px; height:36px; border-radius:50%; display:none; align-items:center; justify-content:center; border:1px solid transparent; background: transparent; cursor:pointer; }
@@ -88,7 +94,8 @@ html.theme-dark .theme-toggle { border:1px solid rgba(255,255,255,0.12); backgro
 .mobile-drawer .drawer-actions { display:flex; flex-direction:column; gap:0.5rem; }
 .drawer-btn, .drawer-link { display:flex; align-items:center; gap:12px; padding:0.875rem 1rem; background:transparent; border:none; color:var(--text-secondary); text-decoration:none; }
 .drawer-link.active { color: var(--accent); }
-.drawer-divider { border:0; height:1px; background: rgba(255,255,255,0.06); margin:8px 0; }
+.drawer-divider { border:0; height:1px; background: rgba(0,0,0,0.08); margin:8px 0; }
+html.theme-dark .drawer-divider { background: rgba(255,255,255,0.06); }
 .drawer-row { display:flex; justify-content:space-between; align-items:center; padding-top:8px; }
 
 /* Open states */
@@ -99,8 +106,8 @@ html.theme-dark .theme-toggle { border:1px solid rgba(255,255,255,0.12); backgro
 @media (max-width: 768px) {
   .nav-center { display:none; }
   .nav-actions .nav-btn, .nav-actions .nav-link, .theme-toggle { display:none; }
-  .hamburger { display:flex; border:1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); }
-  html.theme-dark .hamburger { border:1px solid rgba(255,255,255,0.06); }
+  .hamburger { display:flex; border:1px solid rgba(0,0,0,0.1); background: rgba(0,0,0,0.03); color: var(--text-primary); }
+  html.theme-dark .hamburger { border:1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.03); }
   .mobile-drawer { display:block; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(10,10,15,0.97); border-left:1px solid rgba(255,255,255,0.06); }
   html:not(.theme-dark) .mobile-drawer { background: rgba(255,255,255,0.97); border-left:1px solid rgba(0,0,0,0.06); }
 }
