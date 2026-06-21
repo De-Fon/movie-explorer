@@ -1,3 +1,8 @@
+/*
+  🧱 Navbar.jsx — "The Header Bar"
+  The top header with logo, navigation links (Home, Search, Watchlist),
+  dark mode toggle and the mobile menu button. Adds a shadow when scrolled.
+*/
 import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext.jsx'

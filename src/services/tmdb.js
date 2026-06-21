@@ -1,3 +1,9 @@
+/*
+  🍽️ services/tmdb.js — "The API Connector"
+  Contains functions that call The Movie Database (TMDB) API such as
+  `getPopularMovies`, `searchMovies`, and `getMovieDetails`. Handles
+  request errors and provides helper functions for image URLs.
+*/
 import axios from 'axios'
 
 const api = axios.create({

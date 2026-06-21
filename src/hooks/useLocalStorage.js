@@ -1,3 +1,7 @@
+/*
+  📓 useLocalStorage.js — "The Browser Notebook"
+  A small hook to persist state to localStorage with a safe API.
+*/
 import { useCallback, useState } from 'react'
 
 export default function useLocalStorage(key, initialValue) {

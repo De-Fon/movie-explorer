@@ -1,3 +1,7 @@
+/*
+  🏅 FavoritesPage.jsx — "The Hall of Fame"
+  Displays the movies the user has marked as favorites and allows removal.
+*/
 import { useMemo } from 'react'
 import { useFavorites } from '../context/FavoritesContext.jsx'
 import MovieCard from '../components/MovieCard.jsx'

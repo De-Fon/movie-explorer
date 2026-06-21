@@ -1,3 +1,9 @@
+/*
+  🎛️ App.jsx — "The Floor Plan"
+  This is the skeleton of the whole website. It decides which "room" (page)
+  to show based on the URL and wraps pages with Context Providers (theme,
+  favorites, watchlist) so every page can access global state.
+*/
 import { Suspense, lazy } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { FavoritesProvider } from './context/FavoritesContext.jsx'

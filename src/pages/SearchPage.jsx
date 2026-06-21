@@ -1,3 +1,8 @@
+/*
+  🔎 SearchPage.jsx — "The Library Search"
+  Dedicated search screen with debounced input that queries TMDB for
+  matching titles.
+*/
 import { useEffect, useMemo, useState } from 'react'
 import { searchMovies } from '../services/tmdb.js'
 import useDebounce from '../hooks/useDebounce.js'

@@ -1,3 +1,8 @@
+/*
+  🧠 ThemeContext.jsx — Remembers Dark/Light mode
+  Stores the user's theme preference in localStorage and exposes a
+  `useTheme()` hook with `toggle()` to switch themes.
+*/
 import { createContext, useContext, useEffect, useState } from 'react'
 
 const ThemeContext = createContext(null)

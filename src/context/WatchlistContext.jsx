@@ -1,3 +1,8 @@
+/*
+  🧠 WatchlistContext.jsx — Global watchlist memory
+  Persists the user's watchlist to localStorage and provides helpers to
+  add/remove/check items across the app.
+*/
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 const WatchlistContext = createContext(null)

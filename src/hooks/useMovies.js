@@ -1,3 +1,8 @@
+/*
+  🔁 useMovies.js — Helper for movie lists
+  Reusable hook to fetch lists of movies while keeping previous data
+  during background refreshes.
+*/
 import { useQuery } from '@tanstack/react-query'
 
 export function useMovies(fetcher, dependencies = []) {

@@ -1,3 +1,9 @@
+/**
+ * ⚙️ jest.config.cjs — "The Test Rulebook"
+ * Tells the testing tool (Jest) how to run tests: which environment to
+ * simulate (a browser via jsdom), how to handle CSS/image imports (mock them),
+ * and which setup files to run before each test suite.
+ */
 module.exports = {
   testEnvironment: 'jsdom',
   transform: {

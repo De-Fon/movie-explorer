@@ -1,3 +1,7 @@
+/*
+  ⚠️ ErrorMessage.jsx — "The Error Sign"
+  Displays an error box with an optional retry button.
+*/
 export default function ErrorMessage({ title = 'Something went wrong', message, retry }) {
   return (
     <div className="error-message" role="alert">

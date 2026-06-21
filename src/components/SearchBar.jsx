@@ -1,3 +1,8 @@
+/*
+  🔎 SearchBar.jsx — "The Input Field"
+  A labeled search input used across the app. Includes an accessible
+  label for screen readers and a simple onChange callback.
+*/
 export default function SearchBar({ value, onChange, placeholder = 'Search movies' }) {
   return (
     <label className="search-bar">

@@ -1,3 +1,8 @@
+/*
+  🎫 MovieCard.jsx — "The Movie Ticket"
+  A single movie card showing poster, title, year, and rating. Includes
+  a favorite button when provided.
+*/
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { posterUrl } from '../services/tmdb.js'

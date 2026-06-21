@@ -1,3 +1,8 @@
+/*
+  ▶️ TrailerModal.jsx — "The Video Pop-up"
+  Opens a modal to play a YouTube trailer. It traps background scrolling
+  while open and listens for Escape to close.
+*/
 import { useEffect } from 'react'
 
 export default function TrailerModal({ open, onClose, videoKey }) {

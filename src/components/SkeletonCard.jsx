@@ -1,3 +1,7 @@
+/*
+  👻 SkeletonCard.jsx — "The Ghost Card"
+  Placeholder UI that mimics a movie card while content is loading.
+*/
 export default function SkeletonCard() {
   return (
     <article className="skeleton-card" aria-hidden="true">

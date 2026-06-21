@@ -1,3 +1,8 @@
+/*
+  🎬 MovieDetailsPage.jsx — "The Movie Profile"
+  Shows full details about a single movie: large poster/backdrop, plot
+  summary, cast, similar titles, and a button to watch the trailer.
+*/
 import { useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import {

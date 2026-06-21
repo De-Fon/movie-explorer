@@ -1,3 +1,7 @@
+/*
+  🎭 CastCard.jsx — "The Actor Profile"
+  Small card that displays an actor's name and the character they played.
+*/
 export default function CastCard({ actor }) {
   return (
     <article className="cast-card">

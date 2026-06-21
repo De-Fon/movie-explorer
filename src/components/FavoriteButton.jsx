@@ -1,3 +1,8 @@
+/*
+  ❤️ FavoriteButton.jsx — "The Heart Icon"
+  A small toggle button used to mark movies as favorites. Updates
+  `aria-pressed` and accepts an accessible label.
+*/
 export default function FavoriteButton({ active = false, onClick, children, ariaLabel }) {
   return (
     <button

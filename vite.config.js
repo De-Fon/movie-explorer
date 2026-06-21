@@ -1,3 +1,9 @@
+/**
+ * 🏗️ vite.config.js — "The Construction Foreman"
+ * This file tells the build tool (Vite) how to package your code for the
+ * internet. It configures the React plugin for fast refresh during development,
+ * and sets up the PWA (installable app) settings like icons and theme colors.
+ */
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'

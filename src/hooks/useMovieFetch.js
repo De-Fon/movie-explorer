@@ -1,3 +1,8 @@
+/*
+  🧩 useMovieFetch.js — "The Data Fetcher"
+  A thin wrapper over React Query tailored for fetching movie endpoints.
+  Exposes `data`, `isLoading`, `isFetching`, `error`, and `refetch`.
+*/
 import { useQuery } from '@tanstack/react-query'
 
 export default function useMovieFetch(keyParts, fetcher, options = {}) {

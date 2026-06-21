@@ -1,3 +1,10 @@
+/*
+  🎨 src/index.css — "The Interior Designer"
+  This file defines the global look: colors, fonts, button styles, and
+  the Dark/Light mode rules. Changing a color here updates the app
+  everywhere.
+*/
+
 :root {
   /* Color tokens (light mode defaults) */
   --text: #6b6375;

@@ -1,3 +1,8 @@
+/*
+  🧠 FavoritesContext.jsx — Global favorites memory
+  Keeps a list of favorite movies in localStorage and exposes helpers
+  to add/remove/check favorites across the app.
+*/
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 
 const FavoritesContext = createContext(null)

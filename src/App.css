@@ -1,3 +1,9 @@
+/*
+  🎭 src/App.css — "The Decorator"
+  Smaller style file for specific animations or layout tweaks not covered
+  in `src/index.css` (e.g., logo animation or small component overrides).
+*/
+
 .counter {
   font-size: 16px;
   padding: 5px 10px;

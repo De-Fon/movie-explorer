@@ -1,3 +1,8 @@
+/*
+  🛡️ ErrorBoundary.jsx — "The Safety Net"
+  Catches runtime errors in child components and shows a friendly error
+  message so the whole app doesn't crash.
+*/
 import React from 'react'
 import ErrorMessage from './ErrorMessage.jsx'
 

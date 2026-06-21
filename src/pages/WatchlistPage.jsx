@@ -1,3 +1,7 @@
+/*
+  📝 WatchlistPage.jsx — "The To-Do List"
+  Displays movies the user wants to watch later and allows removing them.
+*/
 import { useMemo } from 'react'
 import { useWatchlist } from '../context/WatchlistContext.jsx'
 import MovieCard from '../components/MovieCard.jsx'

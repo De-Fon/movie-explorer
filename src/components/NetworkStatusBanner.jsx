@@ -1,3 +1,7 @@
+/*
+  ⚡ NetworkStatusBanner.jsx — "The Connectivity Alert"
+  Shows a small bar when the app loses or regains internet connectivity.
+*/
 import { useEffect, useState } from 'react'
 
 export default function NetworkStatusBanner() {

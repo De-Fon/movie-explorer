@@ -1,3 +1,10 @@
+/**
+ * 🎬 main.jsx — "The Stage Manager"
+ * This script wakes up React. It sets up the "memory helpers" (React Query)
+ * so the app remembers data it fetches, and then it injects your main App
+ * component into the empty <div id="root"> in index.html.
+ * It also turns on "offline mode" by registering the Service Worker.
+ */
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'

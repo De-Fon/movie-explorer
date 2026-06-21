@@ -1,3 +1,8 @@
+/*
+  📚 Pagination.jsx — "The Page Turner"
+  Simple pagination control used for lists. Shows Prev/Next and a small
+  range of page buttons.
+*/
 export default function Pagination({ currentPage, totalPages, onChange }) {
   if (!totalPages || totalPages <= 1) {
     return null

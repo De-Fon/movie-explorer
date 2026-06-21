@@ -1,3 +1,8 @@
+/*
+  🏠 HomePage.jsx — "The Main Lobby"
+  The first screen users see. Shows a grid of discoverable movies and
+  provides filter controls (sort, rating, year) and infinite scrolling.
+*/
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import useDebounce from '../hooks/useDebounce.js'
