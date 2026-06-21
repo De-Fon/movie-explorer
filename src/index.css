@@ -733,6 +733,14 @@ button:hover,
   padding: 16px 0;
 }
 
+.validation-error {
+  color: #9b1c1c;
+  background: #fff1f2;
+  padding: 12px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
 .skeleton-card {
   background: linear-gradient(90deg, var(--code-bg), rgba(0,0,0,0.02));
   border-radius: 8px;

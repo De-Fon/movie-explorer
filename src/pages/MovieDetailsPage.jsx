@@ -71,7 +71,10 @@ export default function MovieDetailsPage() {
   if (!movie) return <ErrorMessage title="Movie not found" message="The information for this movie is unavailable." />
 
   const backdrop = backdropUrl(movie.backdrop_path)
-  const poster = posterUrl(movie.poster_path)
+  const poster = posterUrl(movie.poster_path) || '/fallback-poster.jpg'
+  const safeTitle = movie.title || movie.original_title || 'Untitled'
+  const safeOverview = movie.overview || 'No overview is available for this title.'
+  const safeRelease = movie.release_date ? formatDate(movie.release_date) : 'Release date unknown'
   const topCast = credits?.cast?.slice(0, 6) || []
   const similarMovies = similar?.results || []
 
@@ -81,34 +84,38 @@ export default function MovieDetailsPage() {
         <div className="movie-hero__overlay">
           <div className="movie-hero__content">
             <div className="movie-hero__poster">
-              <img src={poster || '/fallback-poster.jpg'} alt={`Poster for ${movie.title}`} />
+              <img src={poster} alt={`Poster for ${safeTitle}`} />
             </div>
             <button
               type="button"
               className={`movie-details__watch ${inWatchlist ? 'movie-details__watch--active' : ''}`}
               onClick={() => {
+                if (!movie.id) return
                 if (inWatchlist) removeWatch(movie.id)
-                else addWatch({ id: movie.id, title: movie.title, poster_path: movie.poster_path, vote_average: movie.vote_average, release_date: movie.release_date })
+                else addWatch({ id: movie.id, title: safeTitle, poster_path: movie.poster_path, vote_average: movie.vote_average, release_date: movie.release_date })
               }}
+              disabled={!movie.id}
             >
               {inWatchlist ? 'Remove from watchlist' : 'Add to watchlist'}
             </button>
             <div className="movie-hero__details">
-              <h1>{movie.title}</h1>
+              <h1>{safeTitle}</h1>
               <p className="movie-hero__meta">
-                <span>{formatDate(movie.release_date)}</span>
+                <span>{safeRelease}</span>
                 <span>{movie.runtime ? `${movie.runtime} min` : 'Runtime unknown'}</span>
                 <span>{formatRating(movie.vote_average)}</span>
               </p>
               <p className="movie-hero__genres">{movie.genres?.map((genre) => genre.name).join(', ') || 'Genre unavailable'}</p>
-              <p className="movie-hero__overview">{movie.overview}</p>
+              <p className="movie-hero__overview">{safeOverview}</p>
               <button
                 type="button"
                 className={`movie-details__favorite ${favorite ? 'movie-details__favorite--active' : ''}`}
                 onClick={() => {
+                  if (!movie.id) return
                   if (favorite) removeFavorite(movie.id)
-                  else addFavorite({ id: movie.id, title: movie.title, poster_path: movie.poster_path, vote_average: movie.vote_average, release_date: movie.release_date })
+                  else addFavorite({ id: movie.id, title: safeTitle, poster_path: movie.poster_path, vote_average: movie.vote_average, release_date: movie.release_date })
                 }}
+                disabled={!movie.id}
               >
                 {favorite ? 'Remove from favorites' : 'Add to favorites'}
               </button>

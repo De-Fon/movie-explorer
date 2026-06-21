@@ -14,6 +14,7 @@ export default function SearchPage() {
   const [result, setResult] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [validationError, setValidationError] = useState(null)
 
   const debouncedQuery = useDebounce(query.trim(), 450)
 
@@ -21,8 +22,17 @@ export default function SearchPage() {
     if (!debouncedQuery) {
       setResult(null)
       setError(null)
+      setValidationError(null)
       setLoading(false)
       setPage(1)
+      return
+    }
+
+    if (debouncedQuery.length < 2) {
+      setResult(null)
+      setError(null)
+      setValidationError('Please enter at least 2 characters to search.')
+      setLoading(false)
       return
     }
 
@@ -34,6 +44,7 @@ export default function SearchPage() {
       .then((data) => {
         if (active) {
           setResult(data)
+          setValidationError(null)
         }
       })
       .catch((fetchError) => {
@@ -63,6 +74,8 @@ export default function SearchPage() {
     if (!debouncedQuery) {
       return <p className="empty-state">Start typing to search for movies.</p>
     }
+
+    if (validationError) return <p className="validation-error">{validationError}</p>
 
     if (loading) {
       return (
