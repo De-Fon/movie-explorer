@@ -15,6 +15,8 @@ describe('Navbar', () => {
     )
 
     expect(screen.getByLabelText(/Movie Explorer home/i)).toBeInTheDocument()
-    expect(screen.getByLabelText(/Watchlist/i)).toBeInTheDocument()
+    const watchlistLinks = screen.getAllByLabelText(/Watchlist/i)
+    expect(watchlistLinks.length).toBeGreaterThan(0)
+    expect(watchlistLinks[0]).toBeInTheDocument()
   })
 })

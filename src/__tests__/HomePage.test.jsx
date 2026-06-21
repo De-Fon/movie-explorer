@@ -6,6 +6,10 @@ import HomePage from '../pages/HomePage.jsx'
 import { ThemeProvider } from '../context/ThemeContext.jsx'
 
 jest.mock('../services/tmdb.js', () => ({
+  getTrendingMovies: jest.fn(() => Promise.resolve({ page: 1, total_pages: 1, results: [] })),
+  getPopularMovies: jest.fn(() => Promise.resolve({ page: 1, total_pages: 1, results: [] })),
+  getTopRatedMovies: jest.fn(() => Promise.resolve({ page: 1, total_pages: 1, results: [] })),
+  getUpcomingMovies: jest.fn(() => Promise.resolve({ page: 1, total_pages: 1, results: [] })),
   getDiscoverMovies: jest.fn(() => Promise.resolve({ page: 1, total_pages: 1, results: [] })),
 }))
 
@@ -21,10 +25,19 @@ function renderWithProviders(ui) {
 }
 
 describe('HomePage', () => {
-  it('renders filters and heading', async () => {
+  it('renders the page heading and filter controls', async () => {
     renderWithProviders(<HomePage />)
-    expect(screen.getByRole('heading', { name: /Discover movies/i })).toBeInTheDocument()
+
+    expect(
+      screen.getByRole('heading', { name: /Discover movies/i })
+    ).toBeInTheDocument()
+
     expect(screen.getByLabelText(/Min Rating/i)).toBeInTheDocument()
-    await waitFor(() => expect(screen.getByText(/No movies match your filters.|No movies were found.|/i)))
+
+    await waitFor(() =>
+      expect(
+        screen.getByText(/No movies match your filters\./i)
+      ).toBeInTheDocument()
+    )
   })
 })

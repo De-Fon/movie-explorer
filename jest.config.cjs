@@ -1,21 +1,14 @@
 module.exports = {
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.[tj]sx?$': 'babel-jest',
-  },
-  moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.js'],
-  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
-}
-module.exports = {
-  testEnvironment: 'jsdom',
-  transform: {
-    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.[jt]sx?$': 'babel-jest',
   },
   moduleNameMapper: {
-    '^\.\./services/tmdb(?:\.js)?$': '<rootDir>/__mocks__/tmdb.js',
+    '^\\.\\./services/tmdb(?:\\.js)?$': '<rootDir>/__mocks__/tmdb.js',
+    '\\.(css|less|scss|sass)$': '<rootDir>/src/__mocks__/styleMock.js',
+    '\\.(jpg|jpeg|png|gif|svg|webp|ico)$': '<rootDir>/src/__mocks__/fileMock.js',
   },
   moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.js', '<rootDir>/src/setupTests.js'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
 }

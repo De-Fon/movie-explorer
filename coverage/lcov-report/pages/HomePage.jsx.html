@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">43.83% </span>
+                <span class="strong">54.79% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>32/73</span>
+                <span class='fraction'>40/73</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.72% </span>
+                <span class="strong">36.36% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>15/66</span>
+                <span class='fraction'>24/66</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">46.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>12/30</span>
+                <span class='fraction'>14/30</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.33% </span>
+                <span class="strong">60% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/60</span>
+                <span class='fraction'>36/60</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -348,7 +348,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -379,33 +379,33 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -595,8 +595,8 @@ function MovieSection({ section, filters }) {
   } = useInfiniteQuery({
     queryKey: ['section', key],
     queryFn: ({ pageParam = 1 }) =&gt; fetcher(pageParam),
-    getNextPageParam: <span class="fstat-no" title="function not covered" >(l</span>ast) =&gt; {
-<span class="cstat-no" title="statement not covered" >      return last.page &lt; (last.total_pages || 1) ? last.page + 1 : undefined</span>
+    getNextPageParam: (last) =&gt; {
+      return last.page &lt; (last.total_pages || <span class="branch-1 cbranch-no" title="branch not covered" >1)</span> ? <span class="branch-0 cbranch-no" title="branch not covered" >last.page + 1 </span>: undefined
     },
   })
 &nbsp;
@@ -626,8 +626,8 @@ function MovieSection({ section, filters }) {
     )
   }
 &nbsp;
-  <span class="missing-if-branch" title="else path not taken" >E</span>if (isError) {
-    return (
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (isError) {
+<span class="cstat-no" title="statement not covered" >    return (</span>
       &lt;section className="movie-section"&gt;
         &lt;div className="movie-section__header"&gt;
           &lt;h2&gt;{title}&lt;/h2&gt;
@@ -637,23 +637,23 @@ function MovieSection({ section, filters }) {
     )
   }
 &nbsp;
-  const pages = <span class="cstat-no" title="statement not covered" >data?.pages || []</span>
-  let movies = <span class="cstat-no" title="statement not covered" >pages.flatMap(<span class="fstat-no" title="function not covered" >(p</span>) =&gt; <span class="cstat-no" title="statement not covered" >p.results || [])</span></span>
+  const pages = data?.pages || <span class="branch-1 cbranch-no" title="branch not covered" >[]</span>
+  let movies = pages.flatMap((p) =&gt; p.results || <span class="branch-1 cbranch-no" title="branch not covered" >[])</span>
 &nbsp;
   // apply lightweight client-side filters
-<span class="cstat-no" title="statement not covered" >  if (filters.minRating) {</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (filters.minRating) {
 <span class="cstat-no" title="statement not covered" >    movies = movies.filter(<span class="fstat-no" title="function not covered" >(m</span>) =&gt; <span class="cstat-no" title="statement not covered" >(m.vote_average || 0) &gt;= Number(filters.minRating))</span></span>
   }
-<span class="cstat-no" title="statement not covered" >  if (filters.year) {</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (filters.year) {
 <span class="cstat-no" title="statement not covered" >    movies = movies.filter(<span class="fstat-no" title="function not covered" >(m</span>) =&gt; <span class="cstat-no" title="statement not covered" >m.release_date?.startsWith(String(filters.year)))</span></span>
   }
-<span class="cstat-no" title="statement not covered" >  if (filters.sortBy === 'rating') {</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (filters.sortBy === 'rating') {
 <span class="cstat-no" title="statement not covered" >    movies = movies.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >(b.vote_average || 0) - (a.vote_average || 0))</span></span>
-  } else <span class="cstat-no" title="statement not covered" >if (filters.sortBy === 'release_date') {</span>
+  } else <span class="missing-if-branch" title="if path not taken" >I</span>if (filters.sortBy === 'release_date') {
 <span class="cstat-no" title="statement not covered" >    movies = movies.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >(b.release_date || '').localeCompare(a.release_date || ''))</span></span>
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;section className="movie-section"&gt;
       &lt;div className="movie-section__header"&gt;
         &lt;h2&gt;{title}&lt;/h2&gt;
@@ -661,7 +661,7 @@ function MovieSection({ section, filters }) {
       {movies.length === 0 ? (
         &lt;p className="empty-state"&gt;No movies were found.&lt;/p&gt;
       ) : (
-        &lt;div className="movie-grid"&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;div className="movie-grid"&gt;</span>
           {movies.map(<span class="fstat-no" title="function not covered" >(m</span>ovie) =&gt; (
 <span class="cstat-no" title="statement not covered" >            &lt;MovieCard key={`${key}-${movie.id}`} movie={movie} /&gt;</span>
           ))}
@@ -814,7 +814,7 @@ export default function HomePage() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-06-21T11:30:52.419Z
+                at 2026-06-21T11:52:55.375Z
             </div>
         <script src="../prettify.js"></script>
         <script>
