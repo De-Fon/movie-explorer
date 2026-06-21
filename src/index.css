@@ -45,6 +45,7 @@ html.theme-dark {
   --text: #9ca3af;
   --text-h: #f3f4f6;
   --bg: #16171d;
+  --surface: #17171c;
   --border: #2e303a;
   --code-bg: #1f2028;
   --accent: #c084fc;
@@ -118,7 +119,7 @@ button {
   justify-content: space-between;
   gap: 14px;
   padding: 18px 24px;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--surface);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }

@@ -10,6 +10,17 @@ export default function TrailerModal({ open, onClose, videoKey }) {
     return () => window.removeEventListener('keyup', onKey)
   }, [open, onClose])
 
+  useEffect(() => {
+    if (open) {
+      const prev = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = prev
+      }
+    }
+    return undefined
+  }, [open])
+
   if (!open || !videoKey) return null
 
   const src = `https://www.youtube.com/embed/${videoKey}?autoplay=1`

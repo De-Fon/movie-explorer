@@ -53,3 +53,18 @@ export const getMovieCredits = (id) =>
 
 export const getSimilarMovies = (id, page = 1) =>
   fetchData(() => api.get(`/movie/${id}/similar`, { params: { page } }))
+
+export const getDiscoverMovies = (page = 1, { sortBy = 'popularity', minRating = 0, year = '' } = {}) => {
+  const sortMap = {
+    popularity: 'popularity.desc',
+    rating: 'vote_average.desc',
+    release_date: 'primary_release_date.desc',
+  }
+  const params = {
+    page,
+    sort_by: sortMap[sortBy] || sortMap.popularity,
+    'vote_average.gte': Number(minRating) || 0,
+  }
+  if (year) params.primary_release_year = year
+  return fetchData(() => api.get('/discover/movie', { params }))
+}

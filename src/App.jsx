@@ -13,6 +13,7 @@ const SearchPage = lazy(() => import('./pages/SearchPage.jsx'))
 const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage.jsx'))
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage.jsx'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'))
+const WatchlistPage = lazy(() => import('./pages/WatchlistPage.jsx'))
 
 export default function App() {
   return (
@@ -34,6 +35,7 @@ export default function App() {
                       <Route path="/search" element={<SearchPage />} />
                       <Route path="/movie/:id" element={<MovieDetailsPage />} />
                       <Route path="/favorites" element={<FavoritesPage />} />
+                      <Route path="/watchlist" element={<WatchlistPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                   </Suspense>

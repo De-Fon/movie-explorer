@@ -5,6 +5,7 @@ import {
   getTopRatedMovies,
   getTrendingMovies,
   getUpcomingMovies,
+  getDiscoverMovies,
 } from '../services/tmdb.js'
 import ErrorMessage from '../components/ErrorMessage.jsx'
 import Loader from '../components/Loader.jsx'
@@ -109,6 +110,81 @@ function MovieSection({ section, filters }) {
   )
 }
 
+function DiscoverSection({ filters }) {
+  const sentinelRef = useRef(null)
+
+  const {
+    data,
+    isLoading,
+    isError,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
+    queryKey: ['discover', filters.sortBy, filters.minRating, filters.year],
+    queryFn: ({ pageParam = 1 }) => getDiscoverMovies(pageParam, filters),
+    getNextPageParam: (last) => (last.page < (last.total_pages || 1) ? last.page + 1 : undefined),
+  })
+
+  useEffect(() => {
+    if (!sentinelRef.current) return
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting && hasNextPage && !isFetchingNextPage) {
+        fetchNextPage()
+      }
+    }, { rootMargin: '400px' })
+    obs.observe(sentinelRef.current)
+    return () => obs.disconnect()
+  }, [sentinelRef.current, hasNextPage, isFetchingNextPage])
+
+  if (isLoading) {
+    return (
+      <section className="movie-section">
+        <div className="movie-section__header">
+          <h2>Discover</h2>
+        </div>
+        <div className="movie-grid">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
+      </section>
+    )
+  }
+
+  if (isError) {
+    return (
+      <section className="movie-section">
+        <div className="movie-section__header">
+          <h2>Discover</h2>
+        </div>
+        <ErrorMessage title="Unable to load Discover results" />
+      </section>
+    )
+  }
+
+  const pages = data?.pages || []
+  const movies = pages.flatMap((p) => p.results || [])
+
+  return (
+    <section className="movie-section">
+      <div className="movie-section__header">
+        <h2>Discover</h2>
+      </div>
+      {movies.length === 0 ? (
+        <p className="empty-state">No movies match your filters.</p>
+      ) : (
+        <div className="movie-grid">
+          {movies.map((movie) => (
+            <MovieCard key={`discover-${movie.id}`} movie={movie} />
+          ))}
+        </div>
+      )}
+      <div ref={sentinelRef} style={{ height: 1 }} />
+    </section>
+  )
+}
+
 export default function HomePage() {
   const [filters, setFilters] = useState({ sortBy: 'popularity', minRating: 0, year: '' })
 
@@ -136,6 +212,7 @@ export default function HomePage() {
           </label>
         </div>
       </header>
+      <DiscoverSection filters={filters} />
       {sectionConfig.map((section) => (
         <MovieSection key={section.key} section={section} filters={filters} />
       ))}
