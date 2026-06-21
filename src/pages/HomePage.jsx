@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useInfiniteQuery } from '@tanstack/react-query'
+import useDebounce from '../hooks/useDebounce.js'
 import {
   getPopularMovies,
   getTopRatedMovies,
@@ -187,6 +188,7 @@ function DiscoverSection({ filters }) {
 
 export default function HomePage() {
   const [filters, setFilters] = useState({ sortBy: 'popularity', minRating: 0, year: '' })
+  const debouncedFilters = useDebounce(filters, 500)
 
   return (
     <main className="page page--home">
@@ -196,7 +198,10 @@ export default function HomePage() {
         <div className="home-filters">
           <label>
             Sort:
-            <select value={filters.sortBy} onChange={(e) => setFilters((f) => ({ ...f, sortBy: e.target.value }))}>
+            <select
+              value={filters.sortBy}
+              onChange={(e) => setFilters((f) => ({ ...f, sortBy: e.target.value }))}
+            >
               <option value="popularity">Popularity</option>
               <option value="rating">Rating</option>
               <option value="release_date">Release Date</option>
@@ -204,15 +209,37 @@ export default function HomePage() {
           </label>
           <label>
             Min Rating:
-            <input type="number" min="0" max="10" step="0.1" value={filters.minRating} onChange={(e) => setFilters((f) => ({ ...f, minRating: e.target.value }))} />
+            <input
+              type="number"
+              min="0"
+              max="10"
+              step="0.1"
+              placeholder="0"
+              value={filters.minRating}
+              onChange={(e) => {
+                const v = e.target.value === '' ? '' : Number(e.target.value)
+                const clamped = v === '' ? '' : Math.max(0, Math.min(10, v))
+                setFilters((f) => ({ ...f, minRating: clamped }))
+              }}
+            />
           </label>
           <label>
             Year:
-            <input type="text" value={filters.year} onChange={(e) => setFilters((f) => ({ ...f, year: e.target.value }))} placeholder="YYYY" />
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              value={filters.year}
+              onChange={(e) => {
+                const raw = e.target.value.replace(/[^0-9]/g, '').slice(0, 4)
+                setFilters((f) => ({ ...f, year: raw }))
+              }}
+              placeholder="YYYY"
+            />
           </label>
         </div>
       </header>
-      <DiscoverSection filters={filters} />
+      <DiscoverSection filters={debouncedFilters} />
       {sectionConfig.map((section) => (
         <MovieSection key={section.key} section={section} filters={filters} />
       ))}

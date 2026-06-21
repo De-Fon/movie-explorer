@@ -8,11 +8,26 @@ export default function Navbar() {
   const { theme, toggle } = useTheme()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [deferredPrompt, setDeferredPrompt] = useState(null)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const onBeforeInstall = (e) => {
+      e.preventDefault()
+      setDeferredPrompt(e)
+    }
+    const onAppInstalled = () => setDeferredPrompt(null)
+    window.addEventListener('beforeinstallprompt', onBeforeInstall)
+    window.addEventListener('appinstalled', onAppInstalled)
+    return () => {
+      window.removeEventListener('beforeinstallprompt', onBeforeInstall)
+      window.removeEventListener('appinstalled', onAppInstalled)
+    }
   }, [])
 
   function handleSearchClick() {
@@ -77,6 +92,25 @@ export default function Navbar() {
                 </svg>
               )}
             </button>
+            {deferredPrompt ? (
+              <button
+                type="button"
+                className="nav-btn nav-btn--primary"
+                onClick={async () => {
+                  try {
+                    deferredPrompt.prompt()
+                    const { outcome } = await deferredPrompt.userChoice
+                    setDeferredPrompt(null)
+                    // if accepted, optional follow-up
+                  } catch (err) {
+                    setDeferredPrompt(null)
+                  }
+                }}
+                aria-label="Install Movie Explorer"
+              >
+                Install
+              </button>
+            ) : null}
           </div>
 
           <button
